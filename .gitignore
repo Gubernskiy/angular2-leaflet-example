@@ -100,3 +100,6 @@ jspm_packages
 
 src/**/*.css
 src/**/*.js
+
+!systemjs.config.js
+!gulpfile.js
