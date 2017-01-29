@@ -2,7 +2,7 @@
   "name": "Angular2-leaflet-example",
   "version": "0.0.0",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" \"gulp less\"",
     "lite": "lite-server",
     "postinstall": "npm prune",
     "tsc": "tsc",

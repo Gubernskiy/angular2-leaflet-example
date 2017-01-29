@@ -20,6 +20,7 @@ gulp.task('css', ["less"], function () {
     return gulp.src([
         'node_modules/leaflet/dist/leaflet.css',
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'node_modules/ng2-dnd/bundles/style.css',
         "src/css/styles.css"])
         .pipe(flatten())
         .pipe(gulp.dest(appProd + "/css"));
@@ -40,7 +41,13 @@ gulp.task("libs", function () {
 });
 
 gulp.task('less', function () {
-    return gulp.src('src/less/styles.less')
+    gulp.src(appDev + '/app/**/*.less')
+        .pipe(less({
+            paths: [path.join(__dirname, 'less', 'includes')]
+        }))
+        .pipe(gulp.dest(appDev + '/app'));
+
+    return gulp.src(appDev+'/less/styles.less')
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
@@ -49,7 +56,7 @@ gulp.task('less', function () {
 
 gulp.task('templateReplace', ['copyAppFolder'], function () {
     return gulp.src([appDev + '/app/**/*.ts'])
-        .pipe(inlineNg2Template({ useRelativePaths: true,removeLineBreaks: true}))
+        .pipe(inlineNg2Template({useRelativePaths: true, removeLineBreaks: true}))
         .pipe(gulp.dest(appDev + '/app'));
 });
 
@@ -70,22 +77,22 @@ gulp.task('compile', function () {
         .pipe(sourcemaps.init())
         .pipe(tsc(tscConfig.compilerOptions));
 
-    r.dts.pipe(gulp.dest(appDev+"/app"));
-    r.js.pipe(gulp.dest(appDev+"/app"));
+    r.dts.pipe(gulp.dest(appDev + "/app"));
+    r.js.pipe(gulp.dest(appDev + "/app"));
 
     return r.pipe(sourcemaps.write('.'))
-            .pipe(gulp.dest(appDev+"/app"));
+        .pipe(gulp.dest(appDev + "/app"));
 });
 
 
 gulp.task('clean', function () {
-    return del.sync([appProd+'/css', appProd+'/libs', appProd+'/js', appProd+'/TEST_DATA']);
+    return del.sync([appProd + '/css', appProd + '/libs', appProd + '/js', appProd + '/TEST_DATA']);
 });
 
-gulp.task('delCopy',['resetApp'], function (cb) {
-    del.sync([appDev+'/copyApp']);
-    setTimeout(function(){
-       cb();
+gulp.task('delCopy', ['resetApp'], function (cb) {
+    del.sync([appDev + '/copyApp']);
+    setTimeout(function () {
+        cb();
     });
 });
 
@@ -105,19 +112,19 @@ gulp.task("afterBuild", function () {
 });
 
 /** bundle */
-gulp.task('bundle',["libs","css"], function () {
+gulp.task('bundle', ["libs", "css"], function () {
     var builder = new Builder('', 'systemjs.config.js');
     return builder
-        .buildStatic(appDev + '/app/main.js', appProd + '/js/bundle.js', { minify: false, sourceMaps: false })
+        .buildStatic(appDev + '/app/main.js', appProd + '/js/bundle.js', {minify: false, sourceMaps: false})
         .then(function () {
-        console.log('Build complete');
-    })
+            console.log('Build complete');
+        })
         .catch(function (err) {
-        console.log('Build error');
-        console.log(err);
-    });
+            console.log('Build error');
+            console.log(err);
+        });
 });
 
 gulp.task('build', function (callback) {
-    runSequence('clean','preBuild','compile','bundle','afterBuild','delCopy', callback);
+    runSequence('clean', 'preBuild', 'compile', 'bundle', 'afterBuild', 'delCopy', callback);
 });
