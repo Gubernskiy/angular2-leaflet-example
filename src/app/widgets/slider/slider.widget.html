@@ -1,0 +1,16 @@
+<div>
+    <label>{{sliderName}}</label><input type="number" [min]="minValue" [max]="maxValue" [(ngModel)] = "value" (change)="setValue(value)">
+    <table width="100%">
+        <tr>
+            <td align="left" width="10%" style="padding-right:20px;">{{minValue}}</td>
+            <td class="sliderBlock">
+                <div class="slider-line"></div>
+                <div #slideValLine class="slider-line slider-line-value"></div>
+                <div #sliderHandle class="slider-pane" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
+                     (mouseup)="onMouseUp($event)">
+                </div>
+            </td>
+            <td align="right" width="10%" style="padding-left:20px;">{{maxValue}}</td>
+        </tr>
+    </table>
+</div>

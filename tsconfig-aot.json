@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "core-js",
+      "leaflet",
+      "geojson",
+      "node"
+    ]
+  },
+  "files": [
+    "src/app/app.module.ts",
+    "src/app/main.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "compiled",
+    "skipMetadataEmit": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

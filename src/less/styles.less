@@ -1,0 +1,56 @@
+@import "base";
+.pointer{
+  curspr:pointer;
+}
+
+
+* {
+    cursor: default;
+}
+
+::-moz-selection {
+    background: @input-selection-color;
+}
+
+::selection {
+    background: @input-selection-color;
+}
+
+:focus {
+    outline: none;
+}
+
+/* Убирает красную обводку инпутов в FF */
+:required, :-moz-submit-invalid, :-moz-focusring {
+    box-shadow: none !important;
+}
+
+[hidden],
+[data-hidden="true"] {
+    display: none !important
+}
+
+html,
+body {
+    min-width: 1180px;
+    color: @base-text;
+    background-color: @background;
+    font-size:@text-size;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.main-container{
+  height:100%;
+
+  >div{
+    height:100%;
+  }
+
+  #map{
+    height:100%;
+    width:100%;
+    cursor:default;
+  }
+}

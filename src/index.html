@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular 2 Leaflet map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/ng2-dnd/bundles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="less/styles.css">
+    <!-- 1. Load src/libraries -->
+     <!-- Polyfill(s) for older browsers -->
+    <script src="../node_modules/angular2-ie9-shims/shims_for_IE.prod.js"></script>
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="../node_modules/systemjs/dist/system.src.js"></script>
+    <!-- Leaflet 1.0.0 -->
+    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <!-- 3. Display the application -->
+  <body>
+    <map-app>Loading...</map-app>
+  </body>
+</html>

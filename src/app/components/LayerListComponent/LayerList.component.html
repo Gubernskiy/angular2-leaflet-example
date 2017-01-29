@@ -1,0 +1,14 @@
+<div dnd-sortable-container [sortableData]="layers" class="layer-list-container">
+    <!-- add new layer btn -->
+    <div></div>
+        <div class="layer-item" *ngFor="let layer of layers; let i = index" dnd-sortable [sortableIndex]="i">
+            <div dnd-draggable [dragEnabled]="true" [dragData]="transferData"
+                 (onDragEnd)="_setOrder()">
+                <div class="layer-name"><input type="checkbox" [(ngModel)]="layer.visible"/>{{layer.title}} <i [ngClass]="{'fa-angle-down':!opacity.show,'fa-angle-up':opacity.show}" class="fa opacity-arrow" (click)="opacity.show=!opacity.show"></i></div>
+                <div #opacity class="opacity-slider">
+                  <my-slider *ngIf="opacity.show" [minValue]="0" sliderName = "Opacity" [value]="layer.opacity" (onValChange)="layer.opacity = $event"></my-slider>
+                </div>
+            </div>
+        </div>
+
+</div>

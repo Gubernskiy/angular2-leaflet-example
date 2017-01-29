@@ -1,0 +1,17 @@
+[
+  {
+    "title": "http://demo.opengeo.org/",
+    "url": "http://demo.opengeo.org/geoserver/gwc/service/tms/1.0.0/ne:ne@EPSG:900913@png/{z}/{x}/{y}.png",
+    "opacity": 0,
+    "visible": true,
+    "type": "tms"
+  },
+  {
+    "title": "http://suite.opengeo.org",
+    "url": "http://suite.opengeo.org/geoserver/usa/wms",
+    "opacity": 0,
+    "visible": true,
+    "type": "wms",
+    "layerName":"usa:states"
+  }
+]

@@ -1,0 +1,52 @@
+@sliderLine: #CCCCCC;
+@sliderPaneBack: #7598DA;
+@sliderShadow: rgba(193, 228, 244, 0.5);
+@inputBorder: #C7C6C4;
+
+.sliderBlock {
+  height: 40px;
+  position: relative;
+}
+
+.slider-line {
+  background: @sliderLine;
+  height: 3px;
+  position: absolute;
+  top: 18px;
+  width: 100%;
+}
+
+.slider-line-value {
+  background: #5082E0;
+  width: 0;
+}
+
+.slider-pane {
+  width: 7px;
+  height: 7px;
+  background: @sliderPaneBack;
+  display: inline-block;
+  border: 1px solid @sliderPaneBack;
+  border-radius: 7px;
+  box-shadow: 0px 0px 1px 10px @sliderShadow;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  border-collapse: separate;
+}
+
+table td {
+  font-size: 12px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  padding: 2px 7px;
+  border: 1px solid @inputBorder;
+  border-radius: 5px;
+  width: 60px;
+}
